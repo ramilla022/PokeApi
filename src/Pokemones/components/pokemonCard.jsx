@@ -51,7 +51,7 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
               <p>Cargando detalles...</p>
             )}
 
-            <Link to={`/pokemon/${details ? details.id : pokemon.name}` } className="btn btn-primary">
+            <Link to={`/pokemon/${details ? details.name : pokemon.name}` } className="btn btn-primary">
                   Mas informacion
             </Link>
           </div>

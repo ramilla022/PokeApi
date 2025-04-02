@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PokemonCard from '../components/pokemonCard';
+import { pokemonApi } from '../../Api/pokemonApi'
 import axios from 'axios';
 
 export const pokemonPage = () => {
@@ -8,7 +9,7 @@ export const pokemonPage = () => {
 
   const fetchPokemons = async () => {
     try {
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=50'); 
+      const response = await pokemonApi.get('/pokemon?limit=50'); 
       setPokemons(response.data.results); 
     } catch (err) {
       console.log(err)
