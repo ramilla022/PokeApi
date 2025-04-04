@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { getPokemonByName } from '../helpers/getPokemonByName'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const pokemonCardName = () => {
 
@@ -12,7 +13,7 @@ const pokemonCardName = () => {
     const [error, setError] = useState(null); 
 
     const volver = () => {
-      navigate(-1)
+      navigate('/home')
     }
 
  useEffect(() => {
@@ -51,10 +52,22 @@ const pokemonCardName = () => {
         <p className="card-text">
           <strong>Ataques:</strong> {pokemon?.moves.slice(0, 3).map(m => m.move.name).join(", ")}
         </p>
+        <p className="card-text">
+          <strong>Estadísticas:</strong> {pokemon?.stats.map(stat => ( <span key={stat.stat.name}>
+          <br />
+          {stat.stat.name}: {stat.base_stat}
+    </span>
+  ))}
+</p>
       </div>
       <div className="card-footer">
         <button className="btn btn-primary" onClick={ volver }>Volver</button>
+        <Link  to={ '/pokemonModif' }  state={{ pokemon }}  className="btn btn-primary">
+        Modificar pokemon
+      </Link>
       </div>
+      
+      
     </div>
   </div>
 );

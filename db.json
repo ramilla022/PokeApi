@@ -1,0 +1,44 @@
+{
+  "pokemones": [
+    {
+      "id": 5,
+      "name": "Ramiro",
+      "abilities": [
+        {
+          "ability": {
+            "name": "Golpear"
+          }
+        }
+      ],
+      "types": [
+        {
+          "type": {
+            "name": "Aire"
+          }
+        },
+        {
+          "type": {
+            "name": "Tierra"
+          }
+        }
+      ],
+      "moves": [
+        {
+          "move": {
+            "name": "Golpe de puño"
+          }
+        },
+        {
+          "move": {
+            "name": "Patada"
+          }
+        },
+        {
+          "move": {
+            "name": "Grito"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import LoginPage from "./Pokemones/pages/loginPage";
 import PokemonCardName from "./Pokemones/components/pokemonCardName";
 import { Navbar } from "./UI/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PokemonModif from "./Pokemones/pages/pokemonModif";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <Route path="/pokemon/:name" element={<PokemonCardName />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/pokemonModif" element={<PokemonModif />}></Route>
+        <Route path="/*" element={<PokemonPage />} />
       </Routes>
 
   
