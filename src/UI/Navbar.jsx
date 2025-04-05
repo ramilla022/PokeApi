@@ -11,9 +11,15 @@ export const Navbar = () => {
           Pokemones
         </Typography>
 
+       
         <Button color="inherit" component={NavLink} to="/home">
-          Home
+          Pokemones
         </Button>
+
+        <Button color="inherit" component={NavLink} to="/pokemonesModificados">
+          Pokemones modificados
+        </Button>
+
 
         <Button color="inherit" component={NavLink} to="/login">
           Iniciar sesión

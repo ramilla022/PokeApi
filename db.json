@@ -1,7 +1,7 @@
 {
   "pokemones": [
     {
-      "id": 5,
+      "id": "d072",
       "name": "Ramiro",
       "abilities": [
         {
@@ -13,12 +13,12 @@
       "types": [
         {
           "type": {
-            "name": "Aire"
+            "name": "Tierra"
           }
         },
         {
           "type": {
-            "name": "Tierra"
+            "name": "Agua"
           }
         }
       ],
@@ -36,6 +36,235 @@
         {
           "move": {
             "name": "Grito"
+          }
+        }
+      ],
+      "height": 180,
+      "weight": 90,
+      "base_experience": 190,
+      "order": 90,
+      "is_default": true,
+      "stats": [
+        {
+          "base_stat": 60,
+          "stat": {
+            "name": "hp"
+          }
+        },
+        {
+          "base_stat": 62,
+          "stat": {
+            "name": "attack"
+          }
+        },
+        {
+          "base_stat": 63,
+          "stat": {
+            "name": "defense"
+          }
+        },
+        {
+          "base_stat": 80,
+          "stat": {
+            "name": "special-attack"
+          }
+        },
+        {
+          "base_stat": 80,
+          "stat": {
+            "name": "special-defense"
+          }
+        },
+        {
+          "base_stat": 60,
+          "stat": {
+            "name": "speed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e683",
+      "name": "Ramiro Mejorado",
+      "abilities": [
+        {
+          "ability": {
+            "name": "Golpear Fuerte"
+          }
+        }
+      ],
+      "types": [
+        {
+          "type": {
+            "name": "Tierra"
+          }
+        },
+        {
+          "type": {
+            "name": "Agua"
+          }
+        },
+        {
+          "type": {
+            "name": "Aire"
+          }
+        }
+      ],
+      "moves": [
+        {
+          "move": {
+            "name": "Tackle"
+          }
+        },
+        {
+          "move": {
+            "name": "body-slam"
+          }
+        },
+        {
+          "move": {
+            "name": "take-down"
+          }
+        },
+        {
+          "move": {
+            "name": "double-edge"
+          }
+        },
+        {
+          "move": {
+            "name": "growl"
+          }
+        },
+        {
+          "move": {
+            "name": "roar"
+          }
+        },
+        {
+          "move": {
+            "name": "strength"
+          }
+        }
+      ],
+      "height": 200,
+      "weight": 100,
+      "base_experience": 300,
+      "order": 90,
+      "is_default": false,
+      "stats": [
+        {
+          "base_stat": 200,
+          "stat": {
+            "name": "hp"
+          }
+        },
+        {
+          "base_stat": 120,
+          "stat": {
+            "name": "attack"
+          }
+        },
+        {
+          "base_stat": 80,
+          "stat": {
+            "name": "defense"
+          }
+        },
+        {
+          "base_stat": 120,
+          "stat": {
+            "name": "special-attack"
+          }
+        },
+        {
+          "base_stat": 125,
+          "stat": {
+            "name": "special-defense"
+          }
+        },
+        {
+          "base_stat": 200,
+          "stat": {
+            "name": "speed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d03c",
+      "name": "Jose",
+      "abilities": [
+        {
+          "ability": {
+            "name": "Rayo del cielo"
+          }
+        }
+      ],
+      "types": [
+        {
+          "type": {
+            "name": "Aire"
+          }
+        }
+      ],
+      "moves": [
+        {
+          "move": {
+            "name": "Tormenta"
+          }
+        },
+        {
+          "move": {
+            "name": "Rayo localizador"
+          }
+        },
+        {
+          "move": {
+            "name": "Lluvia acida"
+          }
+        }
+      ],
+      "height": 20,
+      "weight": 200,
+      "base_experience": 120,
+      "order": 92,
+      "is_default": true,
+      "stats": [
+        {
+          "base_stat": 30,
+          "stat": {
+            "name": "hp"
+          }
+        },
+        {
+          "base_stat": 100,
+          "stat": {
+            "name": "attack"
+          }
+        },
+        {
+          "base_stat": 120,
+          "stat": {
+            "name": "defense"
+          }
+        },
+        {
+          "base_stat": 300,
+          "stat": {
+            "name": "special-attack"
+          }
+        },
+        {
+          "base_stat": 15,
+          "stat": {
+            "name": "special-defense"
+          }
+        },
+        {
+          "base_stat": 40,
+          "stat": {
+            "name": "speed"
           }
         }
       ]
