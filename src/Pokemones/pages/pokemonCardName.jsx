@@ -62,7 +62,6 @@ const pokemonCardName = () => {
             </ul>
           </div>
 
-
           {/* MUESTRO LOS PRIMEROS 10 ATAQUES PORQUE ALGUNOS TIENEN UN MONTON*/}
 
           <p className="mt-3"><strong>Primeros ataques:</strong> {pokemon.moves.slice(0, 10).map(m => m.move.name).join(", ")}</p>

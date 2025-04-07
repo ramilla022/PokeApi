@@ -82,7 +82,7 @@ const PokemonModif = () => {
   return (
     <div className="container mt-4">
       <h2>Modificar Pokémon: {pokemon.name}</h2>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} className="mb-3" style={{ maxHeight: "150px" }} />
+      <img src={pokemon.sprites.front_default} alt={pokemon.name} className="mb-3" style={{ maxHeight: "250px" }} />
 
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

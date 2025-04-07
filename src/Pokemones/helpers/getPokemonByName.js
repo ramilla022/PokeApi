@@ -8,6 +8,4 @@ export const getPokemonByName = async (name) => {
         console.error('Error al obtener el Pokémon:', error);
     }
    
-
-    
 }

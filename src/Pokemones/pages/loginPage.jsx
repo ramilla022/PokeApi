@@ -1,23 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-const loginPage = () => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     setError("");
-    console.log("Datos enviados:", formData);
+
+    try {
+      const response = await fetch('http://localhost:3000/usuarios');
+      const data = await response.json();
+  
+      const usuarioEncontrado = data.find(
+        (u) => u.email === formData.email && u.password === formData.password
+      );
+  
+      if (usuarioEncontrado) {
+        alert("¡Inicio de sesión exitoso!")
+        localStorage.setItem("user", JSON.stringify(usuarioEncontrado));
+        navigate("/home");
+        window.location.reload();
+        return null
+      } else {
+        setError("Correo o contraseña incorrectos");
+      }
+  
+    } catch (error) {
+      console.error("Error al validar usuario:", error);
+      setError("Error al validar usuario");
+    }
   };
 
   return (
@@ -37,6 +56,7 @@ const loginPage = () => {
               placeholder="Ejemplo: usuario@email.com"
               value={formData.email}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -50,6 +70,7 @@ const loginPage = () => {
                 placeholder="Ingresa tu contraseña"
                 value={formData.password}
                 onChange={handleChange}
+                required
               />
               <button
                 type="button"
@@ -67,11 +88,13 @@ const loginPage = () => {
         </form>
 
         <p className="mt-3 text-center">
-        <button className="btn btn-link p-0" onClick={() => navigate("/register")}> Registrarse </button>
+          <button className="btn btn-link p-0" onClick={() => navigate("/register")}>
+            Registrarse
+          </button>
         </p>
       </div>
     </div>
   );
 };
 
-export default loginPage;
+export default LoginPage;
