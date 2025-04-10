@@ -1,28 +1,47 @@
-import { NavLink } from 'react-router-dom';
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { NavLink } from "react-router-dom";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { isAuthenticated, removeToken } from "../Pokemones/helpers/auth";
 
 export const Navbar = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userData = localStorage.getItem("user");
-    setUser(userData ? JSON.parse(userData) : null);
+    const checkAuth = () => {
+      const userData = localStorage.getItem("user");
+      const valid = isAuthenticated();
+  
+      if (userData && valid) {
+        setUser(JSON.parse(userData));
+      } else {
+        localStorage.clear(); 
+        removeToken();
+        setUser(null);
+        window.location.href = "/login"; 
+        window.location.reload(); 
+      }
+    };
+  
+    checkAuth();
+    const interval = setInterval(checkAuth, 5000);
+    return () => clearInterval(interval);
   }, []);
+
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    removeToken();
+    window.location.href = "/login"
+    window.location.reload()
   };
 
   return (
     <AppBar position="static">
       <Toolbar>
-  
         <img
           src="/pokemon.png"
           alt="Pokémon"
-          style={{ width: '40px', height: '40px', marginRight: '10px' }}
+          style={{ width: "40px", height: "40px", marginRight: "10px" }}
         />
 
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
@@ -56,7 +75,7 @@ export const Navbar = () => {
             <Button
               onClick={handleLogout}
               color="inherit"
-              sx={{ backgroundColor: '#dc3545' }}
+              sx={{ backgroundColor: "#dc3545" }}
             >
               Cerrar sesión
             </Button>

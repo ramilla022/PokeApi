@@ -18,6 +18,9 @@ export default [
       },
     },
     settings: { react: { version: '18.3' } },
+    optimizeDeps: {
+      exclude: ['jws', 'jwa', 'safe-buffer']
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,

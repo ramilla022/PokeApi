@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { generateToken, saveToken } from "../helpers/auth";
+
+
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -26,6 +29,9 @@ const LoginPage = () => {
       if (usuarioEncontrado) {
         alert("¡Inicio de sesión exitoso!")
         localStorage.setItem("user", JSON.stringify(usuarioEncontrado));
+        const token = generateToken({ usuarioEncontrado });
+        saveToken(token);
+
         navigate("/home");
         window.location.reload();
         return null
@@ -40,7 +46,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100">
+    <div className="d-flex align-items-center justify-content-center vh-100" >
       <div className="card shadow p-4" style={{ maxWidth: "400px", width: "100%" }}>
         <h2 className="text-center mb-4">Iniciar Sesión</h2>
 
@@ -63,6 +69,7 @@ const LoginPage = () => {
           <div className="mb-3">
             <label className="form-label">Contraseña</label>
             <div className="input-group">
+            
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -74,7 +81,7 @@ const LoginPage = () => {
               />
               <button
                 type="button"
-                className="btn btn-outline-secondary"
+                className="btn btn-outline-dark"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? "Ocultar" : "Mostrar"}

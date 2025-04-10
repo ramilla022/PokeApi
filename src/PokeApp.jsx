@@ -9,7 +9,7 @@ import LoginPage from "./Pokemones/pages/loginPage";
 import { Navbar } from "./UI/Navbar";
 import PokemonModif from "./Pokemones/components/pokemonModif";
 import PokemonesModificados from "./Pokemones/pages/pokemonesModificados";
-import PrivateRoute from "./Pokemones/helpers/privateRoute";
+import PrivateRoute from "./Pokemones/Routes/privateRoute";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

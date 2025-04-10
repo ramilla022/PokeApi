@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
+import { isAuthenticated } from "../helpers/auth";
 
 const PrivateRoute = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user ? children : <Navigate to="/login" />
+  return isAuthenticated() ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
