@@ -1,0 +1,18 @@
+body {
+    background-image: url('https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-54368.jpg?semt=ais_hybrid&w=740');
+    background-size: cover;        
+    background-repeat: no-repeat;  
+    background-position: center;   
+    background-attachment: fixed;   
+    color: white;
+    padding-bottom: 20px;
+
+    
+  }
+  .text-shadow {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  *{
+    font-family: sans-serif;
+  }

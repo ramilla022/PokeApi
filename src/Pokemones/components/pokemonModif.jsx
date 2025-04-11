@@ -81,6 +81,7 @@ const PokemonModif = () => {
 
   return (
     <div className="container mt-4">
+        <div className="bg-white p-4 rounded-4 shadow-lg">
       <h2>Modificar Pokémon: {pokemon.name}</h2>
       <img src={pokemon.sprites.front_default} alt={pokemon.name} className="mb-3" style={{ maxHeight: "250px" }} />
 
@@ -146,12 +147,16 @@ const PokemonModif = () => {
                 onChange={handleChange}
               />
             </div>
-          ))}
+            )
+          )
+        }
         </div>
 
         <button type="submit" className="btn btn-success me-2">Guardar cambios</button>
       </form>
+      
       <button className="btn btn-secondary" onClick={volver}>Volver</button>
+      </div>
     </div>
   );
 };

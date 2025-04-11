@@ -68,8 +68,8 @@ const pokemonCardName = () => {
         </div>
 
         <div className="card-footer d-flex justify-content-between">
-          <button className="btn btn-primary" onClick={volver}>Volver</button>
-          <Link to={'/pokemonModif'} state={{ pokemon }} className="btn btn-warning">
+          <button className="btn btn-secondary" onClick={volver}>Volver</button>
+          <Link to={'/pokemonModif'} state={{ pokemon }} className="btn btn-success">
             Modificar Pokémon
           </Link>
         </div>

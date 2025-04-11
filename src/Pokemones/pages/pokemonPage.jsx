@@ -29,8 +29,7 @@ export const pokemonPage = () => {
 
   return (
     <div className="container my-4">
-      <h1 className="text-center">Página de Pokémon</h1>
-
+      <h1 className="text-center text-white fw-bold text-shadow">Página de Pokémones</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {pokemons.length > 0 ? (
           pokemons.map((pokemon) => (

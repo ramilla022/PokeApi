@@ -46,9 +46,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100" >
-      <div className="card shadow p-4" style={{ maxWidth: "400px", width: "100%" }}>
-        <h2 className="text-center mb-4">Iniciar Sesión</h2>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
+      <div className="card shadow-lg" style={{ width: '100%', maxWidth: '400px', borderRadius: '10px' }}>
+        <div className="card-header text-center" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
+          <h3>Iniciar sesion</h3>
+        </div>
+        <div className="card-body">
+      
 
         {error && <div className="alert alert-danger">{error}</div>}
 
@@ -59,7 +63,7 @@ const LoginPage = () => {
               type="email"
               name="email"
               className="form-control"
-              placeholder="Ejemplo: usuario@email.com"
+              placeholder="usuario@email.com"
               value={formData.email}
               onChange={handleChange}
               required
@@ -79,6 +83,8 @@ const LoginPage = () => {
                 onChange={handleChange}
                 required
               />
+
+              
               <button
                 type="button"
                 className="btn btn-outline-dark"
@@ -89,7 +95,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">
+          <button className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', borderColor: '#4682b4' }}>
             Iniciar Sesión
           </button>
         </form>
@@ -99,6 +105,7 @@ const LoginPage = () => {
             Registrarse
           </button>
         </p>
+      </div>
       </div>
     </div>
   );

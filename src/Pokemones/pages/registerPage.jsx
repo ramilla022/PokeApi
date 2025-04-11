@@ -51,7 +51,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f0f8ff' }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
       <div className="card shadow-lg" style={{ width: '100%', maxWidth: '400px', borderRadius: '10px' }}>
         <div className="card-header text-center" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
           <h3>Registro</h3>
@@ -97,7 +97,7 @@ export const RegisterPage = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', borderColor: '#4682b4' }}>
+            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
               Registrar
             </button>
 
