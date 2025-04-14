@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PokemonesModificados = () => {
   const [pokemones, setPokemones] = useState([]);
@@ -65,9 +66,14 @@ const PokemonesModificados = () => {
                   ))}
                 </ul>
                 </div>
-              
-           
           </div>
+
+          <Link
+            to={`/pokemonesModificados/${poke.id}`}
+            className="btn btn-primary mt-4 w-100 rounded-pill">
+            Más información
+          </Link>
+
           <div className="card-footer text-center bg-light border-top-0">
             <small className="text-muted">ID: {poke.id} • {poke.is_default ? "Original" : "Modificado"}</small>
           </div>

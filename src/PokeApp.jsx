@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import PokemonCardName from "./Pokemones/pages/pokemonCardName";
 import RegisterPage from "./Pokemones/pages/registerPage";
 import PokemonPage from "./Pokemones/pages/pokemonPage";
@@ -9,6 +8,7 @@ import LoginPage from "./Pokemones/pages/loginPage";
 import { Navbar } from "./UI/Navbar";
 import PokemonModif from "./Pokemones/components/pokemonModif";
 import PokemonesModificados from "./Pokemones/pages/pokemonesModificados";
+import PokemonesModificadosDetalle from './Pokemones/components/pokemonesModificadosDetalle'
 import PrivateRoute from "./Pokemones/Routes/privateRoute";
 
 function App() {
@@ -55,6 +55,12 @@ function App() {
         <Route path="/pokemonModif" element={
           <PrivateRoute>
             <PokemonModif />
+          </PrivateRoute>
+        } />
+
+        <Route path="/pokemonesModificados/:id" element={
+          <PrivateRoute>
+            <PokemonesModificadosDetalle />
           </PrivateRoute>
         } />
 
