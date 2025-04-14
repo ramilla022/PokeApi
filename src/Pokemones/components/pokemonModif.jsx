@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { getPokemonByNameDB } from "../helpers/getPokemonByName";
 
 const PokemonModif = () => {
   const location = useLocation();
@@ -62,6 +63,12 @@ const PokemonModif = () => {
       })),
     };
 
+    const yaExiste = await getPokemonByNameDB(formData.name);
+    if (yaExiste) {
+      alert('Este nombre ya está en uso');
+      return;
+    }
+
     try {
       await fetch('http://localhost:3000/pokemones', {
         method: 'POST',
@@ -108,22 +115,22 @@ const PokemonModif = () => {
 
         <div className="mb-3">
           <label className="form-label">Altura (en decímetros)</label>
-          <input type="number" className="form-control" name="height" value={formData.height} onChange={handleChange} required />
+          <input type="number" className="form-control" name="height" value={formData.height} onChange={handleChange} required max={999} />
         </div>
 
         <div className="mb-3">
           <label className="form-label">Peso (en hectogramos)</label>
-          <input type="number" className="form-control" name="weight" value={formData.weight} onChange={handleChange} required />
+          <input type="number" className="form-control" name="weight" value={formData.weight} onChange={handleChange} required max={999} />
         </div>
 
         <div className="mb-3">
           <label className="form-label">Experiencia base</label>
-          <input type="number" className="form-control" name="base_experience" value={formData.base_experience} onChange={handleChange} required />
+          <input type="number" className="form-control" name="base_experience" value={formData.base_experience} onChange={handleChange} required max={999} />
         </div>
 
         <div className="mb-3">
           <label className="form-label">Orden en Pokédex</label>
-          <input type="number" className="form-control" name="order" value={formData.order} onChange={handleChange} required />
+          <input type="number" className="form-control" name="order" value={formData.order} onChange={handleChange} required max={999} />
         </div>
 
         <div className="mb-3">
@@ -145,6 +152,7 @@ const PokemonModif = () => {
                 name={`stat_${stat.name}`}
                 value={stat.value}
                 onChange={handleChange}
+                max={999}
               />
             </div>
             )

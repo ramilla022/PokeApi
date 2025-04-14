@@ -24,8 +24,18 @@ function App() {
       {isLoggedIn && <Navbar />}
       <Routes>
 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/login"
+        element={
+        isLoggedIn ? <Navigate to="/home" replace /> : <LoginPage />
+        }       
+        />
+        <Route
+        path="/register"
+        element={
+        isLoggedIn ? <Navigate to="/home" replace /> : <RegisterPage />
+        }       
+        />
 
         <Route path="/home" element={
           <PrivateRoute>

@@ -26,8 +26,13 @@ export const RegisterPage = () => {
       const emailExists = users.some(user => user.email === formData.email);
   
       if (emailExists) {
-        alert('Este correo ya está registrado. Por favor, usa otro.');
+        alert('Este correo ya esta registrado. Por favor, usa otro.');
         return;
+      }
+
+      if (formData.password.length < 8 || !/[A-Z]/.test(formData.password)) {
+        alert("La contraseña debe contener al menos 1 mayuscula y 8 caracteres");
+        return
       }
       
       const response = await fetch('http://localhost:3000/usuarios', {
