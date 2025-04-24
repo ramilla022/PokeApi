@@ -17,16 +17,22 @@
       "name": "German",
       "email": "german@google.com",
       "password": "German123"
+    },
+    {
+      "id": "e19c",
+      "name": "Ramiro",
+      "email": "aa@dd.com",
+      "password": "Ramiro022"
     }
   ],
   "pokemones": [
     {
-      "id": "d072",
+      "id": "c869",
       "name": "Ramiro",
       "abilities": [
         {
           "ability": {
-            "name": "Golpear"
+            "name": "Golpe"
           }
         }
       ],
@@ -35,420 +41,89 @@
           "type": {
             "name": "Tierra"
           }
-        },
-        {
-          "type": {
-            "name": "Agua"
-          }
         }
       ],
       "moves": [
         {
           "move": {
-            "name": "Golpe de puño"
+            "name": "razor-wind"
           }
         },
         {
           "move": {
-            "name": "Patada"
+            "name": "swords-dance"
           }
         },
         {
           "move": {
-            "name": "Grito"
+            "name": "cut"
+          }
+        },
+        {
+          "move": {
+            "name": "bind"
+          }
+        },
+        {
+          "move": {
+            "name": "vine-whip"
+          }
+        },
+        {
+          "move": {
+            "name": "headbutt"
+          }
+        },
+        {
+          "move": {
+            "name": "tackle"
           }
         }
       ],
-      "height": 180,
-      "weight": 90,
-      "base_experience": 190,
-      "order": 90,
+      "height": 7,
+      "weight": 69,
+      "base_experience": 64,
+      "order": 1,
       "is_default": true,
       "stats": [
         {
-          "base_stat": 60,
+          "base_stat": 45,
           "stat": {
             "name": "hp"
           }
         },
         {
-          "base_stat": 62,
+          "base_stat": 49,
           "stat": {
             "name": "attack"
           }
         },
         {
-          "base_stat": 63,
+          "base_stat": 49,
           "stat": {
             "name": "defense"
           }
         },
         {
-          "base_stat": 80,
+          "base_stat": 65,
           "stat": {
             "name": "special-attack"
           }
         },
         {
-          "base_stat": 80,
+          "base_stat": 65,
           "stat": {
             "name": "special-defense"
           }
         },
         {
-          "base_stat": 60,
+          "base_stat": 45,
           "stat": {
             "name": "speed"
           }
         }
-      ]
-    },
-    {
-      "id": "e683",
-      "name": "Ramiro Mejorado",
-      "abilities": [
-        {
-          "ability": {
-            "name": "Golpear Fuerte"
-          }
-        }
       ],
-      "types": [
-        {
-          "type": {
-            "name": "Tierra"
-          }
-        },
-        {
-          "type": {
-            "name": "Agua"
-          }
-        },
-        {
-          "type": {
-            "name": "Aire"
-          }
-        }
-      ],
-      "moves": [
-        {
-          "move": {
-            "name": "Tackle"
-          }
-        },
-        {
-          "move": {
-            "name": "body-slam"
-          }
-        },
-        {
-          "move": {
-            "name": "take-down"
-          }
-        },
-        {
-          "move": {
-            "name": "double-edge"
-          }
-        },
-        {
-          "move": {
-            "name": "growl"
-          }
-        },
-        {
-          "move": {
-            "name": "roar"
-          }
-        },
-        {
-          "move": {
-            "name": "strength"
-          }
-        }
-      ],
-      "height": 200,
-      "weight": 100,
-      "base_experience": 300,
-      "order": 90,
-      "is_default": false,
-      "stats": [
-        {
-          "base_stat": 200,
-          "stat": {
-            "name": "hp"
-          }
-        },
-        {
-          "base_stat": 120,
-          "stat": {
-            "name": "attack"
-          }
-        },
-        {
-          "base_stat": 80,
-          "stat": {
-            "name": "defense"
-          }
-        },
-        {
-          "base_stat": 120,
-          "stat": {
-            "name": "special-attack"
-          }
-        },
-        {
-          "base_stat": 125,
-          "stat": {
-            "name": "special-defense"
-          }
-        },
-        {
-          "base_stat": 200,
-          "stat": {
-            "name": "speed"
-          }
-        }
-      ]
-    },
-    {
-      "id": "d03c",
-      "name": "Jose",
-      "abilities": [
-        {
-          "ability": {
-            "name": "Rayo del cielo"
-          }
-        }
-      ],
-      "types": [
-        {
-          "type": {
-            "name": "Aire"
-          }
-        }
-      ],
-      "moves": [
-        {
-          "move": {
-            "name": "Tormenta"
-          }
-        },
-        {
-          "move": {
-            "name": "Rayo localizador"
-          }
-        },
-        {
-          "move": {
-            "name": "Lluvia acida"
-          }
-        }
-      ],
-      "height": 20,
-      "weight": 200,
-      "base_experience": 120,
-      "order": 92,
-      "is_default": true,
-      "stats": [
-        {
-          "base_stat": 30,
-          "stat": {
-            "name": "hp"
-          }
-        },
-        {
-          "base_stat": 100,
-          "stat": {
-            "name": "attack"
-          }
-        },
-        {
-          "base_stat": 120,
-          "stat": {
-            "name": "defense"
-          }
-        },
-        {
-          "base_stat": 300,
-          "stat": {
-            "name": "special-attack"
-          }
-        },
-        {
-          "base_stat": 15,
-          "stat": {
-            "name": "special-defense"
-          }
-        },
-        {
-          "base_stat": 40,
-          "stat": {
-            "name": "speed"
-          }
-        }
-      ]
-    },
-    {
-      "id": "4319",
-      "name": "La tortuga",
-      "abilities": [
-        {
-          "ability": {
-            "name": "Salto"
-          }
-        }
-      ],
-      "types": [
-        {
-          "type": {
-            "name": "Aire"
-          }
-        },
-        {
-          "type": {
-            "name": "Tierra"
-          }
-        }
-      ],
-      "moves": [
-        {
-          "move": {
-            "name": "Salto 2 pies"
-          }
-        },
-        {
-          "move": {
-            "name": "Supersalto"
-          }
-        }
-      ],
-      "height": 120,
-      "weight": 1000,
-      "base_experience": 340,
-      "order": 120,
-      "is_default": true,
-      "stats": [
-        {
-          "base_stat": 300,
-          "stat": {
-            "name": "hp"
-          }
-        },
-        {
-          "base_stat": 120,
-          "stat": {
-            "name": "attack"
-          }
-        },
-        {
-          "base_stat": 300,
-          "stat": {
-            "name": "defense"
-          }
-        },
-        {
-          "base_stat": 30,
-          "stat": {
-            "name": "special-attack"
-          }
-        },
-        {
-          "base_stat": 34,
-          "stat": {
-            "name": "special-defense"
-          }
-        },
-        {
-          "base_stat": 20,
-          "stat": {
-            "name": "speed"
-          }
-        }
-      ]
-    },
-    {
-      "id": "88c2",
-      "name": "Gonzalo",
-      "abilities": [
-        {
-          "ability": {
-            "name": "Dormir"
-          }
-        }
-      ],
-      "types": [
-        {
-          "type": {
-            "name": "Aire"
-          }
-        },
-        {
-          "type": {
-            "name": "Tierra"
-          }
-        }
-      ],
-      "moves": [
-        {
-          "move": {
-            "name": "El dormilon"
-          }
-        },
-        {
-          "move": {
-            "name": "El siestas"
-          }
-        },
-        {
-          "move": {
-            "name": "El noninoni"
-          }
-        }
-      ],
-      "height": 150,
-      "weight": 70,
-      "base_experience": 150,
-      "order": 129,
-      "is_default": true,
-      "stats": [
-        {
-          "base_stat": 300,
-          "stat": {
-            "name": "hp"
-          }
-        },
-        {
-          "base_stat": 120,
-          "stat": {
-            "name": "attack"
-          }
-        },
-        {
-          "base_stat": 10,
-          "stat": {
-            "name": "defense"
-          }
-        },
-        {
-          "base_stat": 20,
-          "stat": {
-            "name": "special-attack"
-          }
-        },
-        {
-          "base_stat": 20,
-          "stat": {
-            "name": "special-defense"
-          }
-        },
-        {
-          "base_stat": 30,
-          "stat": {
-            "name": "speed"
-          }
-        }
-      ]
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
     }
   ]
 }

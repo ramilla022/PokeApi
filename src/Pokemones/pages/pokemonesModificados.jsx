@@ -30,8 +30,7 @@ const PokemonesModificados = () => {
           <div className="card-body text-center">
             <h4 className="card-title text-capitalize">{poke.name}</h4>
             <img
-              src="https://i0.wp.com/pinchees.com/wp-content/uploads/2024/10/1000403101.png?fit=2000%2C2000&ssl=1"
-              alt="Pokébola"
+              src={ poke.image }
               className="my-2"
               style={{ width: "140px", height: "140px" }}
             />

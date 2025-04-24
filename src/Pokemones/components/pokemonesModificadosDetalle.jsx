@@ -32,8 +32,7 @@ const PokemonesModificadosDetalle = () => {
 
                 <div className="mb-4">
                   <img
-                    src="https://i0.wp.com/pinchees.com/wp-content/uploads/2024/10/1000403101.png?fit=2000%2C2000&ssl=1"
-                    alt={details.name}
+                    src={details.image}
                     className="rounded-circle shadow"
                     style={{
                       width: '160px',

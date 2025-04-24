@@ -6,11 +6,13 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
 
   useEffect(() => {
     const getDetails = async () => {
-      const data = await pokemonDetails(pokemon.url);
-      setDetails(data);
-    };
-    getDetails();
-  }, [pokemon.url]);
+      if (!details) {
+        const data = await pokemonDetails(pokemon.url);
+        setDetails(data);
+      }
+    };  
+   getDetails();
+  }, [pokemon.url, details]);
 
   return (
     <div className="col mb-4">

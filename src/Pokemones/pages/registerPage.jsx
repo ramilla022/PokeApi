@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = import.meta.env.VITE_API_URL_JSON
+const API_URL = import.meta.env.VITE_API_URL_JSON;
 
 export const RegisterPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
+  });
+
+  const [error, setError] = useState({
+    email: '',
+    password: '',
+    general: ''
   });
 
   const navigate = useNavigate();
@@ -19,23 +25,32 @@ export const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
 
+    setError({ email: '', password: '', general: '' });
+
+    try {
       const existingUsersRes = await fetch(`${API_URL}/usuarios`);
       const users = await existingUsersRes.json();
-  
+
       const emailExists = users.some(user => user.email === formData.email);
-  
+
       if (emailExists) {
-        alert('Este correo ya esta registrado. Por favor, usa otro.');
+        setError((prev) => ({ ...prev, email: 'Este correo ya está registrado. Por favor, usa otro.' }));
         return;
       }
 
-      if (formData.password.length < 8 || !/[A-Z]/.test(formData.password)) {
-        alert("La contraseña debe contener al menos 1 mayuscula y 8 caracteres");
-        return
+
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+        setError((prev) => ({ ...prev, email: 'Por favor, ingresa un correo electrónico válido.' }));
+        return;
       }
-      
+
+
+      if (formData.password.length < 8 || !/[A-Z]/.test(formData.password)) {
+        setError((prev) => ({ ...prev, password: 'La contraseña debe contener al menos 1 mayúscula y 8 caracteres.' }));
+        return;
+      }
+
       const response = await fetch(`${API_URL}/usuarios`, {
         method: 'POST',
         headers: {
@@ -47,17 +62,18 @@ export const RegisterPage = () => {
       if (response.ok) {
         alert('Usuario registrado con éxito');
         setFormData({ name: '', email: '', password: '' });
-        navigate("/login");
+        navigate('/login');
       } else {
-        alert('Error al registrar el usuario');
+        setError((prev) => ({ ...prev, general: 'Error al registrar el usuario.' }));
       }
     } catch (error) {
       console.error('Error al enviar datos:', error);
+      setError((prev) => ({ ...prev, general: 'Hubo un problema al procesar tu solicitud. Intenta nuevamente.' }));
     }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       <div className="card shadow-lg" style={{ width: '100%', maxWidth: '400px', borderRadius: '10px' }}>
         <div className="card-header text-center" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
           <h3>Registro</h3>
@@ -88,6 +104,7 @@ export const RegisterPage = () => {
                 onChange={handleChange}
                 required
               />
+              {error.email && <div className="text-danger mt-2">{error.email}</div>}
             </div>
 
             <div className="mb-3">
@@ -101,14 +118,17 @@ export const RegisterPage = () => {
                 onChange={handleChange}
                 required
               />
+              {error.password && <div className="text-danger mt-2">{error.password}</div>}
             </div>
+
+            {error.general && <div className="text-danger mb-3">{error.general}</div>}
 
             <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
               Registrar
             </button>
 
-            <button type="button" className="btn btn-link w-100 mt-3" onClick={() => navigate('/login')} >
-             Iniciar sesión
+            <button type="button" className="btn btn-link w-100 mt-3" onClick={() => navigate('/login')}>
+              Iniciar sesión
             </button>
           </form>
         </div>
