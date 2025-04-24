@@ -1,6 +1,7 @@
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL_POKE
 
 export const pokemonApi = axios.create({
-    baseURL: 'https://pokeapi.co/api/v2'
+    baseURL: API_URL
 });

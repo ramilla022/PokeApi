@@ -1,38 +1,33 @@
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { isAuthenticated, removeToken } from "../Pokemones/helpers/auth";
 
 export const Navbar = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const checkAuth = () => {
       const userData = localStorage.getItem("user");
       const valid = isAuthenticated();
-  
+
       if (userData && valid) {
         setUser(JSON.parse(userData));
       } else {
-        localStorage.clear(); 
-        removeToken();
         setUser(null);
-        window.location.href = "/login"; 
-        window.location.reload(); 
       }
     };
-  
-    checkAuth();
-    const interval = setInterval(checkAuth, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
+    checkAuth();
+  }, []); 
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     removeToken();
-    window.location.href = "/login"
-    window.location.reload()
+    setUser(null);
+    window.location.href = "/login";
   };
 
   return (
@@ -55,17 +50,6 @@ export const Navbar = () => {
         <Button color="inherit" component={NavLink} to="/pokemonesModificados">
           Pokemones modificados
         </Button>
-
-        {!user && (
-          <>
-            <Button color="inherit" component={NavLink} to="/login">
-              Iniciar sesión
-            </Button>
-            <Button color="inherit" component={NavLink} to="/register">
-              Registrarse
-            </Button>
-          </>
-        )}
 
         {user && (
           <>

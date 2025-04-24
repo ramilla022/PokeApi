@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode"; 
 
-const SECRET_KEY = "clave-supersecreta"; 
+const SECRET_KEY = import.meta.env.VITE_SECRET_KEY
 
 export const generateToken = (payload, expiresInSeconds = 3600) => {
   const header = {

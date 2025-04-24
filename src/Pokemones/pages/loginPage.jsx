@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateToken, saveToken } from "../helpers/auth";
 
+const API_URL = import.meta.env.VITE_API_URL_JSON
 
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -19,21 +20,20 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:3000/usuarios');
+      const response = await fetch(`${API_URL}/usuarios`);
       const data = await response.json();
+  
   
       const usuarioEncontrado = data.find(
         (u) => u.email === formData.email && u.password === formData.password
       );
   
       if (usuarioEncontrado) {
-        alert("¡Inicio de sesión exitoso!")
         localStorage.setItem("user", JSON.stringify(usuarioEncontrado));
         const token = generateToken({ usuarioEncontrado });
         saveToken(token);
-
+        setIsLoggedIn(true);
         navigate("/home");
-        window.location.reload();
         return null
       } else {
         setError("Correo o contraseña incorrectos");

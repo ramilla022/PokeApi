@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL_JSON
+
 const PokemonesModificadosDetalle = () => {
   const { id } = useParams();
   const [details, setDetails] = useState(null);
@@ -8,7 +10,7 @@ const PokemonesModificadosDetalle = () => {
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/pokemones/${id}`);
+        const res = await fetch(`${API_URL}/pokemones/${id}`);
         const data = await res.json();
         setDetails(data);
       } catch (error) {

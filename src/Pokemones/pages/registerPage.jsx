@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL_JSON
 
 export const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ export const RegisterPage = () => {
 
     try {
 
-      const existingUsersRes = await fetch('http://localhost:3000/usuarios');
+      const existingUsersRes = await fetch(`${API_URL}/usuarios`);
       const users = await existingUsersRes.json();
   
       const emailExists = users.some(user => user.email === formData.email);
@@ -35,7 +36,7 @@ export const RegisterPage = () => {
         return
       }
       
-      const response = await fetch('http://localhost:3000/usuarios', {
+      const response = await fetch(`${API_URL}/usuarios`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

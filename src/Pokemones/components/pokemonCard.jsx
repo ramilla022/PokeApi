@@ -40,13 +40,6 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
           </p>
 
           <p className="mb-2">
-            <strong>Habilidades:</strong> <br />
-            <span className="text-muted small">
-              {details.abilities.map((ability) => ability.ability.name).join(", ")}
-            </span>
-          </p>
-
-          <p className="mb-2">
             <strong>Altura:</strong> {details.height} m &nbsp;|&nbsp;
             <strong>Peso:</strong> {details.weight} kg
           </p>
@@ -57,17 +50,6 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
               {details.types.map((type) => type.type.name).join(", ")}
             </span>
           </p>
-
-          <div className="mt-4 text-start">
-            <strong>Estadísticas:</strong>
-            <ul className="list-group list-group-flush small">
-              {details.stats.map((stat) => (
-                <li key={stat.stat.name} className="list-group-item bg-transparent px-0 py-1">
-                  <span className="text-capitalize">{stat.stat.name}:</span> {stat.base_stat}
-                </li>
-              ))}
-            </ul>
-          </div>
         </>
       ) : (
         <p>Cargando detalles...</p>

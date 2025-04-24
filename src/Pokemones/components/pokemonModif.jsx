@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getPokemonByNameDB } from "../helpers/getPokemonByName";
 
+const API_URL = import.meta.env.VITE_API_URL_JSON
+
 const PokemonModif = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -70,7 +72,7 @@ const PokemonModif = () => {
     }
 
     try {
-      await fetch('http://localhost:3000/pokemones', {
+      await fetch(`${API_URL}/pokemones`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedPokemon),
