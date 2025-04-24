@@ -12,15 +12,16 @@ const pokemonCardName = () => {
     navigate('/home')
   }
 
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      try {
-        const data = await getPokemonByName(name)
-        setPokemon(data.data)
-      } catch (err) {
-        setError(err.message || "Error al cargar el Pokémon")
-      }
+  const fetchPokemon = async () => {
+    try {
+      const data = await getPokemonByName(name)
+      setPokemon(data.data)
+    } catch (err) {
+      setError(err.message || "Error al cargar el Pokémon")
     }
+  }
+
+  useEffect(() => {
     fetchPokemon()
   }, [name])
 

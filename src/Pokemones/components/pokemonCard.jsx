@@ -1,31 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const PokemonCard = ({ pokemon, pokemonDetails }) => {
-  const [details, setDetails] = useState(null);
+export const PokemonCard = ({ url }) => {
+
+  const [detalle, setDetalle] = useState(null);
 
   useEffect(() => {
-    const getDetails = async () => {
-      if (!details) {
-        const data = await pokemonDetails(pokemon.url);
-        setDetails(data);
-      }
-    };  
-   getDetails();
-  }, [pokemon.url, details]);
+    fetch( url )
+      .then(res => res.json())
+      .then(data => setDetalle(data));
+  }, [ url ]);
 
   return (
     <div className="col mb-4">
   <div className="card h-100 shadow rounded-4 border-0 bg-light">
     <div className="card-body text-center p-4">
-      {details ? (
+      {detalle ? (
         <>
-          <h3 className="card-title text-uppercase fw-bold mb-3">{details.name}</h3>
+          <h3 className="card-title text-uppercase fw-bold mb-3">{detalle.name}</h3>
 
           <div className="mb-3">
             <img
-              src={details.sprites.front_default}
-              alt={details.name}
+              src={detalle.sprites.front_default}
+              alt={detalle.name}
               className="rounded-circle shadow-sm"
               style={{
                 width: '180px',
@@ -38,18 +35,18 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
           </div>
 
           <p className="mb-2">
-            <strong>Pokédex #:</strong> {details.id}
+            <strong>Pokédex #:</strong> {detalle.id}
           </p>
 
           <p className="mb-2">
-            <strong>Altura:</strong> {details.height} m &nbsp;|&nbsp;
-            <strong>Peso:</strong> {details.weight} kg
+            <strong>Altura:</strong> {detalle.height} m &nbsp;|&nbsp;
+            <strong>Peso:</strong> {detalle.weight} kg
           </p>
 
           <p className="mb-2">
             <strong>Tipo:</strong> <br />
             <span className="badge bg-success text-capitalize">
-              {details.types.map((type) => type.type.name).join(", ")}
+              {detalle.types.map((type) => type.type.name).join(", ")}
             </span>
           </p>
         </>
@@ -57,12 +54,14 @@ export const PokemonCard = ({ pokemon, pokemonDetails }) => {
         <p>Cargando detalles...</p>
       )}
 
-      <Link
-        to={`/pokemon/${details ? details.name : pokemon.name}`}
-        className="btn btn-primary mt-4 w-100 rounded-pill"
-      >
-        Más información
-      </Link>
+        {detalle && (
+          <Link
+            to={`/pokemon/${detalle.name}`}
+            className="btn btn-primary mt-4 w-100 rounded-pill"
+          >
+            Más información
+          </Link>
+        )}
     </div>
   </div>
 </div>

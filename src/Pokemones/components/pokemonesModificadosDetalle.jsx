@@ -7,17 +7,17 @@ const PokemonesModificadosDetalle = () => {
   const { id } = useParams();
   const [details, setDetails] = useState(null);
 
-  useEffect(() => {
-    const getDetails = async () => {
-      try {
-        const res = await fetch(`${API_URL}/pokemones/${id}`);
-        const data = await res.json();
-        setDetails(data);
-      } catch (error) {
-        console.error("Error al obtener el Pokémon:", error);
-      }
-    };
+  const getDetails = async () => {
+    try {
+      const res = await fetch(`${API_URL}/pokemones/${id}`);
+      const data = await res.json();
+      setDetails(data);
+    } catch (error) {
+      console.error("Error al obtener el Pokémon:", error);
+    }
+  };
 
+  useEffect(() => {
     getDetails();
   }, [id]);
 

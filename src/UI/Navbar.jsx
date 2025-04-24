@@ -7,21 +7,16 @@ export const Navbar = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const checkAuth = () => {
+    const userData = localStorage.getItem("user");
+    const valid = isAuthenticated();
 
-  useEffect(() => {
-    const checkAuth = () => {
-      const userData = localStorage.getItem("user");
-      const valid = isAuthenticated();
-
-      if (userData && valid) {
-        setUser(JSON.parse(userData));
-      } else {
-        setUser(null);
-      }
-    };
-
-    checkAuth();
-  }, []); 
+    if (userData && valid) {
+      setUser(JSON.parse(userData));
+    } else {
+      setUser(null);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -29,6 +24,11 @@ export const Navbar = () => {
     setUser(null);
     window.location.href = "/login";
   };
+
+  useEffect(() => {
+    checkAuth();
+  }, []); 
+
 
   return (
     <AppBar position="static">

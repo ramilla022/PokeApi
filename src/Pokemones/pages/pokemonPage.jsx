@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PokemonCard from '../components/pokemonCard';
 import { pokemonApi } from '../../Api/pokemonApi'
-import axios from 'axios';
+
 
 export const pokemonPage = () => {
 
@@ -23,11 +23,7 @@ export const pokemonPage = () => {
   }, []);
 
 
-  const fetchPokemonDetails = async (url) => {
-    const response = await axios.get(url);
-    return response.data;
-  };
-
+  
   const indexOfLastPokemon = paginaActual * pokemonsPorPagina;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPorPagina;
   const pokemonesActuales = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
@@ -50,9 +46,11 @@ export const pokemonPage = () => {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {pokemonesActuales.length > 0 ? (
           pokemonesActuales.map((pokemon) => (
+
             <div key={pokemon.name} className="col">
-              <PokemonCard pokemon={pokemon} pokemonDetails={fetchPokemonDetails} />
+              <PokemonCard url={ pokemon.url }/>
             </div>
+            
           ))
         ) : (
           <p>No se encontraron Pokémon.</p>
