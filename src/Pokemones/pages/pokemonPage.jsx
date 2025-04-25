@@ -1,59 +1,68 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import PokemonCard from '../components/PokemonCard';
-import { pokemonApi } from '../../Api/pokemonApi'
+import { pokemonApi } from '../../Api/pokemonApi';
 
+const API_URL = import.meta.env.VITE_API_URL_JSON;
 
- const pokemonPage = () => {
-
+const PokemonPage = ({ modificados = false }) => {
   const [pokemons, setPokemons] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [pokemonsPorPagina] = useState(9);
 
-  const fetchPokemons = async () => {
-    try {
-      const response = await pokemonApi.get('/pokemon?limit=500'); 
-      setPokemons(response.data.results); 
-    } catch (err) {
-      console.log(err)
-    }
-  };
-
   useEffect(() => {
-    fetchPokemons();
-  }, []);
+    const fetchData = async () => {
+      setPokemons([]);
 
+      if (modificados) {
+        try {
+          const res = await fetch(`${API_URL}/pokemones`);
+          const data = await res.json();
+          const user = JSON.parse(localStorage.getItem("user"));
+          const userEmail = user?.email;
+          const pokemonesFiltrados = data.filter(poke => poke.user_email === userEmail);
+          setPokemons(pokemonesFiltrados);
+        } catch (err) {
+          console.error("Error al cargar pokemones modificados:", err);
+        }
+      } else {
+        try {
+          const response = await pokemonApi.get('/pokemon?limit=500');
+          const results = response.data.results;
+          setPokemons(results); 
+        } catch (err) {
+          console.error("Error al cargar pokemones:", err);
+        }
+      }
+    };
 
-  
+    fetchData();
+  }, [modificados]);
+
   const indexOfLastPokemon = paginaActual * pokemonsPorPagina;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPorPagina;
   const pokemonesActuales = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
   const paginate = (pageNumber) => setPaginaActual(pageNumber);
   const totalPages = Math.ceil(pokemons.length / pokemonsPorPagina);
-
-  const limite = 5; 
+  const limite = 5;
   const paginaInicial = Math.max(1, paginaActual - Math.floor(limite / 2));
   const paginaFinal = Math.min(totalPages, paginaActual + Math.floor(limite / 2));
-
-
-
 
   return (
     <div className="container my-4">
       <h1 className="text-center text-white fw-bold display-3 text-uppercase mb-5 lh-base">
-        Página de Pokémones
+        {modificados ? "Pokémones Modificados" : "Página de Pokémones"}
       </h1>
+
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {pokemonesActuales.length > 0 ? (
-          pokemonesActuales.map((pokemon) => (
-
-            <div key={pokemon.name} className="col">
-              <PokemonCard url={ pokemon.url }/>
+          pokemonesActuales.map((poke) => (
+            <div key={poke.name} className="col">
+              <PokemonCard detalle={poke} modificado={modificados} />
             </div>
-
           ))
         ) : (
-          <p>No se encontraron Pokémon.</p>
+          <p className="text-white text-center">No se encontraron Pokémon.</p>
         )}
       </div>
 
@@ -61,14 +70,13 @@ import { pokemonApi } from '../../Api/pokemonApi'
         <ul className="pagination">
           <li className="page-item">
             <button
-              onClick={() => paginate(1)} 
+              onClick={() => paginate(1)}
               className="page-link"
-              disabled={paginaActual === 1}>
+              disabled={paginaActual === 1}
+            >
               Primera
             </button>
           </li>
-
-      
           {[...Array(paginaFinal - paginaInicial + 1)].map((_, index) => {
             const pageNumber = paginaInicial + index;
             return (
@@ -82,10 +90,9 @@ import { pokemonApi } from '../../Api/pokemonApi'
               </li>
             );
           })}
-
           <li className="page-item">
             <button
-              onClick={() => paginate(totalPages)} 
+              onClick={() => paginate(totalPages)}
               className="page-link"
               disabled={paginaActual === totalPages}
             >
@@ -96,6 +103,6 @@ import { pokemonApi } from '../../Api/pokemonApi'
       </div>
     </div>
   );
-};
+}
 
-export default pokemonPage
+export default PokemonPage;

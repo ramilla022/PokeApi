@@ -99,7 +99,8 @@ const PokemonModif = () => {
       }
 
       const savedPokemon = await response.json();
-      navigate(`/pokemonesModificados/${savedPokemon.id}`);
+      navigate(`/pokemon/${savedPokemon.name}/${savedPokemon.id}/json`);
+
 
     } catch (error) {
       console.error("Error al guardar en JSON Server:", error);
