@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL_JSON;
 
-export const RegisterPage = () => {
+ const RegisterPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

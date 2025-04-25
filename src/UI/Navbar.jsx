@@ -1,11 +1,13 @@
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, replace, useNavigate } from "react-router-dom";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { isAuthenticated, removeToken } from "../Pokemones/helpers/auth";
+import { useAuth } from '../Auth/AuthContext'
 
 export const Navbar = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const checkAuth = () => {
     const userData = localStorage.getItem("user");
@@ -13,7 +15,7 @@ export const Navbar = () => {
 
     if (userData && valid) {
       setUser(JSON.parse(userData));
-    } else {
+    } else if (user !== null) {
       setUser(null);
     }
   };
@@ -22,7 +24,8 @@ export const Navbar = () => {
     localStorage.removeItem("user");
     removeToken();
     setUser(null);
-    window.location.href = "/login";
+    logout()
+    navigate('/login')
   };
 
   useEffect(() => {

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import PokemonCard from '../components/pokemonCard';
+import { useEffect, useState } from 'react'
+import PokemonCard from '../components/PokemonCard';
 import { pokemonApi } from '../../Api/pokemonApi'
 
 
-export const pokemonPage = () => {
+ const pokemonPage = () => {
 
   const [pokemons, setPokemons] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
@@ -50,7 +50,7 @@ export const pokemonPage = () => {
             <div key={pokemon.name} className="col">
               <PokemonCard url={ pokemon.url }/>
             </div>
-            
+
           ))
         ) : (
           <p>No se encontraron Pokémon.</p>

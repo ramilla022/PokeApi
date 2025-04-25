@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const PokemonCard = ({ url }) => {
+ const PokemonCard = ({ url }) => {
 
   const [detalle, setDetalle] = useState(null);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getPokemonByName } from '../helpers/getPokemonByName'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 

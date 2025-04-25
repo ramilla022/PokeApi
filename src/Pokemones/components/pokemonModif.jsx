@@ -52,6 +52,9 @@ const PokemonModif = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userEmail = user?.email; 
+
     const updatedPokemon = {
       name: formData.name,
       abilities: formData.abilities.split(",").map(a => ({ ability: { name: a.trim() } })),
@@ -67,6 +70,7 @@ const PokemonModif = () => {
         stat: { name: s.name }
       })),
       image: formData.image,
+      user_email: userEmail,
     };
 
     const newErrors = {};

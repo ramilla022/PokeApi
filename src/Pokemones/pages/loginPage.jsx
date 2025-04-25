@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { generateToken, saveToken } from "../helpers/auth";
+import { useAuth } from "../../Auth/authContext";
 
 const API_URL = import.meta.env.VITE_API_URL_JSON
 
@@ -9,6 +10,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,7 +34,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
         localStorage.setItem("user", JSON.stringify(usuarioEncontrado));
         const token = generateToken({ usuarioEncontrado });
         saveToken(token);
-        setIsLoggedIn(true);
+        login();
         navigate("/home");
         return null
       } else {
