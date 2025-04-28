@@ -123,7 +123,7 @@ const API_URL = import.meta.env.VITE_API_URL_JSON;
 
             {error.general && <div className="text-danger mb-3">{error.general}</div>}
 
-            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', color: 'white', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
+            <button type="submit" className="btn btn-primary w-100 rounded-top" >
               Registrar
             </button>
 

@@ -97,7 +97,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
             </div>
           </div>
 
-          <button className="btn btn-primary w-100" style={{ backgroundColor: '#4682b4', borderColor: '#4682b4' }}>
+          <button className="btn btn-primary w-100">
             Iniciar Sesión
           </button>
         </form>

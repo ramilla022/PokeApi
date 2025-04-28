@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
+import { BotonVolver } from "../components/Botones";
 
 const API_URL = import.meta.env.VITE_API_URL_JSON
 const API_URL2 = import.meta.env.VITE_API_URL_POKE
@@ -87,7 +88,7 @@ const PokemonCardName = () => {
         </div>
 
         <div className="card-footer d-flex justify-content-between">
-          <button className="btn btn-secondary" onClick={volver}>Volver</button>
+          <BotonVolver onClick={volver} />
           {source !== 'json' && (
             <Link to={`/pokemonModif/${id}`} state={{ pokemon }} className="btn btn-success">
               Modificar Pokémon

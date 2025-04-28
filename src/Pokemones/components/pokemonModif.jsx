@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getPokemonByNameDB } from "../helpers/getPokemonByName";
+import { BotonVolver } from "./Botones";
 
 const API_URL = import.meta.env.VITE_API_URL_JSON;
 
@@ -184,7 +185,7 @@ const PokemonModif = () => {
 
           <div className="d-flex justify-content-start mt-3">
             <button type="submit" className="btn btn-success me-2">Guardar cambios</button>
-            <button type="button" className="btn btn-secondary" onClick={volver}>Volver</button>
+            <BotonVolver onClick={volver} />
           </div>
 
           {errors.submit && <div className="alert alert-danger mt-3">{errors.submit}</div>}
